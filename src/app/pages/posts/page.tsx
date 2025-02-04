@@ -5,6 +5,9 @@ import { axiosInstance } from "@/app/api/axiosInstance"
 import { apiPosts } from "@/app/api/path"
 import { useStore } from "@/app/store/useStore"
 import { Card, CardDescription, CardTitle } from "@/components/ui/card"
+import { Separator } from "@/components/ui/separator"
+import Link from "next/link"
+import { MessageCircleMore } from "lucide-react"
 import {
     Pagination,
     PaginationContent,
@@ -12,12 +15,10 @@ import {
     PaginationLink,
     PaginationNext,
     PaginationPrevious,
-  } from "@/components/ui/pagination"
-import { Separator } from "@/components/ui/separator"
+} from "@/components/ui/pagination"
 
 
 const Posts = () => {
-
     const posts = useStore((state) => state.posts)
     const getPosts = useStore((state) => state.getPosts)
     const [currentPage, setCurrentPage] = React.useState(1)
@@ -48,38 +49,39 @@ const Posts = () => {
 
   return (
     <div>
-    {/* Posts */}
-      {
-        currentPosts.length > 0 &&
-        currentPosts.map((post, id)=> {
+        {/* Posts */}
+        {
+          currentPosts.length > 0 &&
+          currentPosts.map((post, id)=> {
             return (
                 <Card className="max-w-[1000px] p-[15px] mt-[10px]" key={id}>
                     <CardTitle>{post.title}</CardTitle>
+                    <CardDescription className="mt-[7px]">{post.body}</CardDescription>
                     <Separator className="my-4" />
-                    <CardDescription>{post.body}</CardDescription>
+                    <Link href={`pages/posts/${id}`}><MessageCircleMore/></Link>
                 </Card>
             )
-        })
-      }
+          })
+        }
      
-     {/* Pagination */}
-     <Pagination className="mt-[10px]">
-        <PaginationContent>
-            <PaginationItem>
-                <PaginationPrevious href="#" onClick={(event) => handleChangePage(event, currentPage - 1)} />
-            </PaginationItem>
-            {Array.from({length: totalPages}, (_, i) => i + 1).map((page, index) => (
-                <PaginationItem key={index}>
-                    <PaginationLink href="#" onClick={(event) => handleChangePage(event, page)} isActive={currentPage === page}>
-                        {page}
-                    </PaginationLink>
-                </PaginationItem>
-            ))}
-            <PaginationItem>
-                <PaginationNext href="#" onClick={(event) => handleChangePage(event, currentPage + 1)} />
-            </PaginationItem>
-        </PaginationContent>
-    </Pagination>
+        {/* Pagination */}
+        <Pagination className="mt-[20px] mb-[20px]">
+           <PaginationContent>
+               <PaginationItem>
+                   <PaginationPrevious href="#" onClick={(event) => handleChangePage(event, currentPage - 1)} />
+               </PaginationItem>
+               {Array.from({length: totalPages}, (_, i) => i + 1).map((page, index) => (
+                   <PaginationItem key={index}>
+                       <PaginationLink href="#" onClick={(event) => handleChangePage(event, page)} isActive={currentPage === page}>
+                           {page}
+                       </PaginationLink>
+                   </PaginationItem>
+               ))}
+               <PaginationItem>
+                   <PaginationNext href="#" onClick={(event) => handleChangePage(event, currentPage + 1)} />
+               </PaginationItem>
+           </PaginationContent>
+        </Pagination>
     </div>
   )
 }
