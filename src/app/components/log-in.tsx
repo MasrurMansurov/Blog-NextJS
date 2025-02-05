@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import toast from 'react-hot-toast'
 
 const LogIn = () => {
-  const [ _, setLoading] = React.useState(false)
+  const [  , setLoading] = React.useState(false)
   const setProfile = useStore((state) => state.setProfile)
 
   const logIn = async () => {
