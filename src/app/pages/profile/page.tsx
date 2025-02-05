@@ -24,8 +24,8 @@ const Profile = () => {
     <div className="mt-[30px]" key={profile.id}>
       <div className='flex items-center gap-[50px]'>
         <div className="flex items-center gap-[7px]">
-          <CircleUserRound/>
-          <CardTitle className="text-[20px]">{profile.username}</CardTitle>
+          <CircleUserRound className="size-[30px]" />
+          <CardTitle className="text-[30px]">{profile.username}</CardTitle>
         </div>
         <div className="flex items-center gap-[10px]">
         <Settings className="size-[17px] cursor-pointer" />

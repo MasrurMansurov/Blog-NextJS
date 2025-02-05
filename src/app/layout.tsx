@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 import { ThemeProvider } from "./components/theme-provider";
 import Header from "./components/header";
 import { Toaster } from 'react-hot-toast';
+import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,6 +20,7 @@ export const metadata: Metadata = {
   description: "Posts & Comments",
 };
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -30,7 +31,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider
+          <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem

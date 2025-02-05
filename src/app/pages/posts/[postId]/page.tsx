@@ -1,16 +1,17 @@
 'use client'
 
+import * as React from "react"
 import { axiosInstance } from "@/app/api/axiosInstance"
 import { apiComments } from "@/app/api/path"
 import { useStore } from "@/app/store/useStore"
 import { Card, CardDescription, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { useParams } from "next/navigation"
-import * as React from "react"
+import AddComment from "@/app/components/add-comment"
 
 const Comments = () => {
 
-  const { id } = useParams() as { id: string }
+  const { postId } = useParams() as { postId: string }
   const comments = useStore((state) => state.comments)
   const getComments = useStore((state) => state.getComments)
 
@@ -24,7 +25,7 @@ const Comments = () => {
   }
 
   React.useEffect(() => {
-    setComments(+id)
+    setComments(+postId)
   },[])
  
   return (
@@ -42,6 +43,7 @@ const Comments = () => {
           )
         })
       }
+      <AddComment/>
     </div>
   )
 }

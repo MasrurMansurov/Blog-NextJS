@@ -44,7 +44,7 @@ const Posts = () => {
     React.useEffect(()=> {
         setPosts()
     },[])
-
+    
     const totalPages = Math.ceil(posts?.length / itemsPerPage)
 
   return (
@@ -58,7 +58,7 @@ const Posts = () => {
                     <CardTitle>{post.title}</CardTitle>
                     <CardDescription className="mt-[7px]">{post.body}</CardDescription>
                     <Separator className="my-4" />
-                    <Link href={`pages/posts/${id}`}><MessageCircleMore/></Link>
+                    <Link href={`/pages/posts/${post.id}`}><MessageCircleMore/></Link>
                 </Card>
             )
           })
