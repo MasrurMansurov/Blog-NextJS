@@ -1,3 +1,3 @@
 # Blog
-Next JS
-Shadcn UI 
+### Next JS
+### Shadcn UI 
