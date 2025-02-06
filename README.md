@@ -1,3 +1,4 @@
 # Blog
-### Next JS
-### Shadcn UI 
+#### Shadcn UI 
+#### TypeScript
+#### Next JS
